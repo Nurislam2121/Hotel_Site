@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои брони - Luma Hotel</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Luma</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'booking' %}">Бронирование</a></li>
+                <li><a href="{% url 'room_list' %}">Номера и цены</a></li>
+                <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="bookings-section">
+            <h2>Мои бронирования</h2>
+            {% if bookings %}
+                <ul>
+                {% for booking in bookings %}
+                    <li>
+                        Номер: {{ booking.room.room_number }} ({{ booking.room.room_type.name }})<br>
+                        Даты: {{ booking.check_in_date }} - {{ booking.check_out_date }}<br>
+                        Статус: {{ booking.get_status_display }}<br>
+                        Стоимость: {{ booking.total_price }}<br>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет бронирований.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

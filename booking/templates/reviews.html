@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - Luma Hotel</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Luma</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'booking' %}">Бронирование</a></li>
+                <li><a href="{% url 'room_list' %}">Номера и цены</a></li>
+                <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="reviews-section">
+            <h2>Отзывы наших гостей</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% if reviews %}
+                <div class="reviews-con">
+                    {% for review in reviews %}
+                        <div class="review-card">
+                            <h4>"{{ review.comment }}"</h4>
+                            <span>{{ review.user.first_name }} {{ review.user.last_name }}, {{ review.rating }} звезд</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Пока нет отзывов.</p>
+            {% endif %}
+            <h2>Оставьте свой отзыв</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Отправить отзыв</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Header</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Luma</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'booking' %}">Бронирование</a></li>
+                <li><a href="{% url 'room_list' %}">Номера и цены</a></li>
+                <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </nav>
+        <div class="user-account">Личный кабинет</div>
+    </header>
+    <main class="main">
+        <section class="begin-home">
+            <h2>Роскошный отель Luma</h2>
+            <h1>Забронируйте себе номер</h1>
+            <a href="{% url 'booking' %}"><button class="btn">Забронировать сейчас</button></a>
+        </section>
+        <section class="introduction">
+            <h2><span class="introduction-h2-1">ЗНАКОМСТВО</span> <span class="introduction-h2-2">С ОТЕЛЕМ</span></h2>
+            <p class="introduction-p1">Наша команда работает круглосуточно, чтобы убедиться, что у вас есть все необходимое для комфортного пребывания в Luma</p>
+            <p class="introduction-p2">В Luma вы получите первоклассный сервис и красивые номера с множеством дополнительных услуг и опций. Приятно проведите время в нашем отеле, посещая спа-центр с расслабляющими процедурами.</p>
+
+            <div class="introduction-card-con">
+                <div class="introduction-card">
+                    <img src="../static/images/tea.svg" alt="Tea">
+                    <h3>РЕСТОРАН</h3>
+                    <p>Цена не включает НДС и плату за услуги</p>
+                </div>
+                <div class="introduction-card">
+                    <img src="../static/images/wifi.svg" alt="Tea">
+                    <h3>БЕСПЛАТНЫЙ WI-FI</h3>
+                    <p>Оставайтесь на связи и наслаждайтесь высоким скоростью интернета!</p>
+                </div>
+                <div class="introduction-card">
+                    <img src="../static/images/car.svg" alt="Tea">
+                    <h3>БЕСПЛАТНАЯ ПАРКОВКА</h3>
+                    <p>Удобная и безопасная парковка для ваших автомобилей!</p>
+                </div>
+                <div class="introduction-card">
+                    <img src="../static/images/shield.svg" alt="Tea">
+                    <h3>СЛУЖБА БЕЗОПАСНОСТИ</h3>
+                    <p>Круглосуточная охрана для вашего спокойствия и комфорта!</p>
+                </div>
+            </div>
+        </section>
+        <section class="reviews-section">
+            <h2>Что говорят наши гости</h2>
+            <div class="reviews-con">
+                <div class="review-card">
+                    <h4>"{{ review.comment }}"</h4>
+                    <span>{{ review.user.first_name }} {{ review.user.last_name }}, {{ review.rating }} звезд</span>
+                </div>
+            </div>
+        </section>
+        <section class="contact-section">
+            <h2>Как нас найти</h2>
+            <div class="contact-con">
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4110.328775865533!2d76.94207606057088!3d43.      24217115843011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.   1!3m3!1m2!1s0x38836f0047c83bf1%3A0xb6e18a6b94f2ef01!2sResident%20Hotel%20Abay!5e0!3m2!1sru!2skz!4v1746962380194!5m2!1     sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"   referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="contact-in">
+                    <div class="contact-description">
+                        <p>Гостиница Luma, расположенная в самом центре Алматы, признана одной из лучших в Казахстане.</p>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> г. Алматы, ул. Абая, 10a</p>
+                        <p><i class="fas fa-phone"></i> Телефон: +7 (776) 606-84-47</p>
+                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:nurislam210306@gmail.com">nurislam210306@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery-section">
+            <h2>Номера отеля</h2>
+            <div class="gallery-con">
+                <div class="gallery-description">
+                    <p>Ознакомьтесь с нашими роскошными номерами и интерьерами отеля Luma. У нас есть всё для вашего комфорта!</p>
+                    <a href="{% url 'room_list' %}" class="btn-anim gallery-btn">Посмотреть все номера</a>
+                </div>
+                <div class="gallery-image">
+                    <a href="{% url 'room_list' %}">
+                        <img src="../static/images/fotogalereya.jpg" alt="Room Preview">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>г. Алматы, ул. Абая, 10a</p>
+        <p>+7 (777) 123-45-67</p>
+        <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
+    </footer>
+</body>
+</html>

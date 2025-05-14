@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вход</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'register.css' %}" />
+</head>
+<body>
+  <div class="page">
+    <form class="form" method="POST">
+      {% csrf_token %}
+      <h1>Вход</h1>
+
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Email -->
+      <label>Email
+        {{ form.email }}
+        {% if form.email.errors %}
+          <p style="color:red;">{{ form.email.errors.0 }}</p>
+        {% endif %}
+      </label>
+
+      <!-- Пароль -->
+      <label>Пароль
+        {{ form.password }}
+        {% if form.password.errors %}
+          <p style="color:red;">{{ form.password.errors.0 }}</p>
+        {% endif %}
+      </label>
+
+      <button type="submit">Продолжить</button>
+      <p class="login-text">
+        Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a>
+      </p>
+    </form>
+  </div>
+</body>
+</html>

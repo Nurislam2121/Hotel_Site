@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Номера и цены - Luma Hotel</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Luma</div>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Главная</a></li>
+          <li><a href="{% url 'booking' %}">Бронирование</a></li>
+          <li><a href="{% url 'room_list' %}">Номера и цены</a></li>
+          <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+          <li><a href="{% url 'contact' %}">Контакты</a></li>
+          <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
+          <li><a href="{% url 'logout' %}">Выйти</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="room-list-section">
+        <h2>Номера и цены</h2>
+        {% if rooms %}
+        <div class="room-list">
+          {% for room in rooms %}
+          <div class="room-card">
+            {% if room.image %}
+            <img src="{{ room.image.url }}" alt="{{ room.room_number }}" /> 
+            {% endif %}
+            <div class="room-desc">
+              <h1>{{ room.room_type.name }}</h1>
+              <p>{{ room.description }}</p>
+              <p>Цена за ночь: {{ room.price_per_night }} тг</p>
+              <p>Вместимость: {{ room.capacity }} человек</p>
+              <div class="room-btn">
+                <a href="{% url 'booking' %}" class="btn">Забронировать</a>
+                <a href="{% url 'room_info' room.id %}" class="btn secondary">Подробнее</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p>Доступных номеров пока нет.</p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>

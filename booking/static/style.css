@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #F4F4F4;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #E8EAF6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1C1C1C;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #1C1C1C;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+nav ul li a:hover {
+    color: #3C52D5;
+}
+.user-account {
+    font-weight: 500;
+    color: #1C1C1C;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.user-account:hover {
+    color: #3C52D5;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.begin-home {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('../static/images/home-back.jpg');
+    background-size: cover;
+    background-position: center;
+    /* position: absolute; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;    
+}
+
+.begin-home h2 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.begin-home h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.btn {
+    background-color: #3C52D5;
+    padding: 20px 30px;
+    border-radius: 2px;
+    border: 5px solid #3C52D5;
+    font-size: 16px;
+    transition: all 0.45s ease-in-out;
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn:hover {
+    border: 5px solid #3C52D5;
+    background-color: transparent;
+}
+
+.introduction {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 150px;
+    padding-right: 150px;
+    text-align: center;
+}
+
+.introduction h2 {
+    font-size: 32px;
+}
+
+.introduction-h2-1 {
+    color: #3C52D5;
+}
+
+.introduction-h2-2 {
+    color: #000;
+}
+
+.introduction p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.introduction-p1 {
+    font-style: italic;
+}
+
+.introduction-p2 {
+    color: #1C1C1C;
+}
+
+.introduction-card-con {
+    display: flex;
+    justify-content: space-between;
+}
+
+.introduction-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    border: 3px solid #F4F4F4;
+    transition: all 0.45s ease-in-out;
+    width: 18vw;
+    padding: 50px 20px;
+}
+
+.introduction-card:hover {
+    border: 3px solid #3C52D5;
+    color: #3C52D5;
+}
+
+.introduction-card img {
+    height: 60px;
+}
+
+.introduction-card h3 {
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.introduction-card p {
+    color: #1C1C1C;
+}
+
+/* ------------------------------------------------------------------- */
+
+.reviews-section {
+    padding: 50px 0px;
+}
+
+.reviews-section h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.reviews-con {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0px 150px;
+    text-align: left;
+}
+.review-card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 23vw;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.review-card h4 {
+    font-style: italic;
+}
+.review-card span {
+    display: block;
+    margin-top: 10px;
+    color: #1C1C1C;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.contact-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact-section h2 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.contact-con {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.contact-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 50px;
+    text-align: left;
+    max-width: 400px; 
+}
+
+.map iframe {
+    width: 600px;
+    height: 450px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.contact-description {
+    margin-bottom: 50px;
+}
+
+.contact-description p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info i {
+    color: #3C52D5;
+    font-size: 1.2em;
+}
+
+.contact-info a {
+    color: #3C52D5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #FF4081;
+}
+
+/* - ---------------------------------------------------------------------- */
+
+.gallery-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.gallery-section h2 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.gallery-con {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.gallery-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 50px;
+    text-align: left;
+    max-width: 400px;
+}
+
+.gallery-description p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.gallery-image img {
+    width: 600px;
+    height: 450px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+.gallery-btn {
+    padding: 15px 25px;
+    font-size: 1em;
+    text-decoration: none;
+    width: 200px;
+}
+
+.btn-anim {
+    background-color: transparent;
+    padding: 20px 30px;
+    border-radius: 2px;
+    border: 5px solid #3C52D5;
+    font-size: 16px;
+    transition: all 0.45s ease-in-out;
+    color: #3C52D5;
+    font-weight: 700;
+}
+
+.btn-anim:hover {
+    border: 5px solid #3C52D5;
+    background-color: #3C52D5;
+    color: #fff;
+}
+
+/* --------------------------------------------------------------------- */
+
+footer {
+    padding: 30px 150px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #E8EAF6;
+}
+
+/* -------------------------------------------------------------------- */

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о номере - Luma Hotel</title>
+    <link rel="stylesheet" href="{% static 'room_info.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Luma</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'booking' %}">Бронирование</a></li>
+                <li><a href="{% url 'room_list' %}">Номера и цены</a></li>
+                <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="room-info-section">
+            <div class="slider-container">
+                <button class="slider-btn prev"></button>
+                <div class="slider">
+                    {% if room.images.all %}
+                        {% for image in room.images.all %}
+                            <div class="slide"><img src="{{ image.image.url }}" alt="{{ image.caption|default:'Room Image' }}"></div>
+                        {% empty %}
+                            <div class="slide"><img src="{{ room.image.url }}" alt="{{ room.room_number }}"></div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="slide"><img src="{{ room.image.url }}" alt="{{ room.room_number }}"></div>
+                    {% endif %}
+                </div>
+                <button class="slider-btn next">></button>
+            </div>
+            <div class="room-info-details">
+                <h2>{{ room.room_type.name }}</h2>
+                <p>Номер: {{ room.room_number }}</p>
+                <p>Описание: {{ room.description }}</p>
+                <p>Цена за ночь: {{ room.price_per_night }} тг</p>
+                <p>Вместимость: {{ room.capacity }} человек</p>
+                <a href="{% url 'booking' %}" class="btn">Забронировать</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>г. Алматы, ул. Абая, 10a</p>
+        <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
+    </footer>
+
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slider = document.querySelector('.slider');
+
+        function showSlide(index) {
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        document.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
+        document.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
+
+        // Автоматическая смена слайдов каждые 5 секунд
+        setInterval(() => showSlide(currentSlide + 1), 5000);
+    </script>
+</body>
+</html>

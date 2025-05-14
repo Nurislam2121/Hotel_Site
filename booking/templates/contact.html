@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Luma Hotel</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Luma</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'booking' %}">Бронирование</a></li>
+                <li><a href="{% url 'room_list' %}">Номера и цены</a></li>
+                <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section">
+            <h2>Как нас найти</h2>
+            <div class="contact-con">
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4110.328775865533!2d76.94207606057088!3d43.24217115843011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836f0047c83bf1%3A0xb6e18a6b94f2ef01!2sResident%20Hotel%20Abay!5e0!3m2!1sru!2skz!4v1746962380194!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="contact-in">
+                    <div class="contact-description">
+                        <p>Гостиница Luma, расположенная в самом центре Алматы, признана одной из лучших в Казахстане.</p>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> г. Алматы, ул. Абая, 10a</p>
+                        <p><i class="fas fa-phone"></i> Телефон: +7 (776) 606-84-47</p>
+                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:nurislam210306@gmail.com">nurislam210306@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <h2>Оставьте сообщение</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
