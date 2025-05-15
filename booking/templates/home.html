@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Header</title>
 </head>
 <body>
@@ -92,7 +93,7 @@
             <h2>Как нас найти</h2>
             <div class="contact-con">
                 <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4110.328775865533!2d76.94207606057088!3d43.      24217115843011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.   1!3m3!1m2!1s0x38836f0047c83bf1%3A0xb6e18a6b94f2ef01!2sResident%20Hotel%20Abay!5e0!3m2!1sru!2skz!4v1746962380194!5m2!1     sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"   referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4110.328775865533!2d76.94207606057088!3d43.24217115843011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836f0047c83bf1%3A0xb6e18a6b94f2ef01!2sResident%20Hotel%20Abay!5e0!3m2!1sru!2skz!4v1746962380194!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="contact-in">
                     <div class="contact-description">
@@ -122,7 +123,8 @@
         </section>
     </main>
 
-<button class="booking-btn" onclick="openBookingModal()">
+    <!-- Кнопка бронирования -->
+    <button class="booking-btn" onclick="openBookingModal()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
@@ -136,7 +138,7 @@
     <!-- Модальное окно бронирования -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <span class="close" onclick="closeBookingModal()">×</span>
             <h2>Забронировать номер</h2>
             <form action="{% url 'booking' %}" method="POST">
                 {% csrf_token %}
@@ -144,11 +146,15 @@
                     <label for="room_type">Тип номера:</label>
                     <select id="room_type" name="room_type" required>
                         <option value="" disabled selected>Выберите тип номера</option>
-                        <option value="standard">Стандарт</option>
-                        <option value="improved">Улучшенный</option>
-                        <option value="lux">Люкс</option>
-                        <option value="presidential">Президентский</option>
+                        <option value="standard">Стандарт (100-150)</option>
+                        <option value="improved">Улучшенный (200-235)</option>
+                        <option value="lux">Люкс (300-320)</option>
+                        <option value="presidential">Президентский (400-405)</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="room_number">Номер комнаты (оставьте пустым для случайного выбора):</label>
+                    <input type="text" id="room_number" name="room_number" placeholder="Например, 131">
                 </div>
                 <div class="form-group">
                     <label for="check_in_date">Дата заезда:</label>

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
-from .models import Booking, Review, ContactRequest
+from .models import Booking, Review, ContactRequest, Room
 
 # Форма регистрации (уже есть)
 class CustomUserCreationForm(UserCreationForm):
@@ -88,18 +88,73 @@ class EmailAuthenticationForm(forms.Form):
 
 # Форма бронирования
 class BookingForm(forms.ModelForm):
+    ROOM_TYPE_CHOICES = [
+        ('', 'Выберите тип номера'),
+        ('standard', 'Standard'),
+        ('improved', 'Improved'),
+        ('lux', 'Lux'),
+        ('presidential', 'Presidential'),
+    ]
+    room_type = forms.ChoiceField(choices=ROOM_TYPE_CHOICES, label="Тип номера", required=True)
+    room_number = forms.CharField(
+        label="Номер комнаты (оставьте пустым для случайного выбора)",
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Например, 131'})
+    )
+
     class Meta:
         model = Booking
-        fields = ['room', 'check_in_date', 'check_out_date', 'guest_count', 'special_requests']
+        fields = ['room_type', 'room_number', 'check_in_date', 'check_out_date', 'guest_count', 'special_requests']
         widgets = {
             'check_in_date': forms.DateInput(attrs={'type': 'date'}),
             'check_out_date': forms.DateInput(attrs={'type': 'date'}),
+            'guest_count': forms.NumberInput(attrs={'min': 1}),
             'special_requests': forms.Textarea(attrs={'placeholder': 'Ваши пожелания'}),
         }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['room'].queryset = self.fields['room'].queryset.filter(is_available=True)
+    def clean(self):
+        cleaned_data = super().clean()
+        room_type = cleaned_data.get('room_type')
+        room_number = cleaned_data.get('room_number')
+        check_in_date = cleaned_data.get('check_in_date')
+        check_out_date = cleaned_data.get('check_out_date')
+
+        print(f"Cleaning form: room_type={room_type}, room_number={room_number}, check_in={check_in_date}, check_out={check_out_date}")
+
+        # Проверка типа номера
+        if not room_type:
+            raise ValidationError("Пожалуйста, выберите тип номера.")
+
+        # Проверка дат
+        if check_in_date and check_out_date:
+            if check_in_date >= check_out_date:
+                raise ValidationError("Дата заезда должна быть раньше даты выезда.")
+
+        # Проверка номера комнаты, если указан
+        if room_number:
+            print(f"Checking room: type={room_type}, number={room_number}")
+            room = Room.objects.filter(
+                room_type__name__iexact=room_type,
+                room_number=room_number,
+                is_available=True
+            ).first()
+            if not room:
+                raise ValidationError(f"Номер {room_number} для типа '{room_type}' недоступен или не существует.")
+            # Проверяем пересечение бронирований
+            overlapping_bookings = Booking.objects.filter(
+                room=room,
+                status__in=['pending', 'confirmed'],
+                check_in_date__lt=check_out_date,
+                check_out_date__gt=check_in_date
+            )
+            if overlapping_bookings.exists():
+                raise ValidationError(f"Номер {room_number} уже забронирован на выбранные даты.")
+            cleaned_data['selected_room'] = room
+        else:
+            # Для случая случайного выбора номера оставляем поле пустым, оно будет заполнено в представлении
+            pass
+
+        return cleaned_data
 
 # Форма отзыва
 class ReviewForm(forms.ModelForm):

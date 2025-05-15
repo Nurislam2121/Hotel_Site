@@ -1,13 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Бронирование - Luma Hotel</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
-  </head>
-  <body>
+</head>
+<body>
     <header>
         <div class="logo">Luma</div>
         <nav>
@@ -23,16 +23,66 @@
         <div class="user-account">Личный кабинет</div>
     </header>
     <main>
-      <section class="booking-section">
-        <h2>Бронирование номера</h2>
-        {% if messages %} {% for message in messages %}
-        <div class="alert {{ message.tags }}">{{ message }}</div>
-        {% endfor %} {% endif %}
-        <form method="post">
-          {% csrf_token %} {{ form.as_p }}
-          <button type="submit" class="btn">Забронировать</button>
-        </form>
-      </section>
+        <section class="booking-section">
+            <h2>Бронирование номера</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    <label for="{{ form.room_type.id_for_label }}">Тип номера:</label>
+                    {{ form.room_type }}
+                    {% if form.room_type.errors %}
+                        <p class="error">{{ form.room_type.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.room_number.id_for_label }}">Номер комнаты (оставьте пустым для случайного выбора):</label>
+                    {{ form.room_number }}
+                    {% if form.room_number.errors %}
+                        <p class="error">{{ form.room_number.errors.0 }}</p>
+                    {% endif %}
+                    <p class="help-text">Доступные номера: Стандарт (100-150), Улучшенный (200-235), Люкс (300-320), Президентский (400-405)</p>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.check_in_date.id_for_label }}">Дата заезда:</label>
+                    {{ form.check_in_date }}
+                    {% if form.check_in_date.errors %}
+                        <p class="error">{{ form.check_in_date.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.check_out_date.id_for_label }}">Дата выезда:</label>
+                    {{ form.check_out_date }}
+                    {% if form.check_out_date.errors %}
+                        <p class="error">{{ form.check_out_date.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.guest_count.id_for_label }}">Количество гостей:</label>
+                    {{ form.guest_count }}
+                    {% if form.guest_count.errors %}
+                        <p class="error">{{ form.guest_count.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.special_requests.id_for_label }}">Особые пожелания:</label>
+                    {{ form.special_requests }}
+                    {% if form.special_requests.errors %}
+                        <p class="error">{{ form.special_requests.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn">Забронировать</button>
+            </form>
+        </section>
     </main>
-  </body>
+</body>
 </html>

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm, EmailAuthenticationForm, BookingForm, ReviewForm, ContactRequestForm
 from .models import Room, Review, Gallery, Booking
+import random
 
 def register_view(request):
     if request.method == 'POST':
@@ -44,11 +45,52 @@ def booking_view(request):
         if form.is_valid():
             booking = form.save(commit=False)
             booking.user = request.user
-            nights = (booking.check_out_date - booking.check_in_date).days
+            check_in_date = form.cleaned_data['check_in_date']
+            check_out_date = form.cleaned_data['check_out_date']
+            room_type = form.cleaned_data['room_type']
+            room_number = form.cleaned_data['room_number']
+
+            print(f"Form data: room_type={room_type}, room_number={room_number}, check_in={check_in_date}, check_out={check_out_date}")
+
+            # Если номер указан, он уже проверен в форме
+            if room_number:
+                booking.room = form.cleaned_data.get('selected_room')
+            else:
+                # Выбираем случайный доступный номер из указанного типа
+                available_rooms = Room.objects.filter(
+                    room_type__name__iexact=room_type,
+                    is_available=True
+                ).exclude(
+                    id__in=Booking.objects.filter(
+                        status__in=['pending', 'confirmed'],
+                        check_in_date__lt=check_out_date,
+                        check_out_date__gt=check_in_date
+                    ).values_list('room__id', flat=True)
+                )
+                print(f"Available rooms: {list(available_rooms)}")
+                if not available_rooms.exists():
+                    messages.error(request, "Нет доступных номеров для выбранного типа на эти даты.")
+                    return render(request, 'booking.html', {'form': form})
+                booking.room = random.choice(available_rooms)
+
+            # Проверяем, что room установлен
+            if not booking.room:
+                messages.error(request, "Не удалось выбрать номер. Пожалуйста, попробуйте снова.")
+                return render(request, 'booking.html', {'form': form})
+
+            # Рассчитываем стоимость
+            nights = (check_out_date - check_in_date).days
+            if nights <= 0:
+                messages.error(request, "Дата выезда должна быть позже даты заезда.")
+                return render(request, 'booking.html', {'form': form})
             booking.total_price = booking.room.price_per_night * nights
             booking.save()
-            messages.success(request, "Бронирование успешно создано!")
+            messages.success(request, f"Бронирование успешно создано! Вам назначен номер {booking.room.room_number}.")
             return redirect('my_bookings')
+        else:
+            # Если форма невалидна, возвращаем ее с ошибками
+            messages.error(request, "Пожалуйста, исправьте ошибки в форме.")
+            print(f"Form errors: {form.errors}")
     else:
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})

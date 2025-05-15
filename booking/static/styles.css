@@ -198,6 +198,35 @@ form textarea {
     color: #155724;
 }
 
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group .error {
+    color: #721c24;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.form-group .help-text {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
 .reviews-con {
     display: flex;
     flex-wrap: wrap;
@@ -342,10 +371,7 @@ form textarea {
 .room-list {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     flex-direction: column;
-
-
 }
 
 .room-card {
@@ -359,12 +385,7 @@ form textarea {
     width: 50%;
     height: auto;
     object-fit: cover;
-    /* transition: all 0.4s ease;     */
 }
-
-/* .room-card img:hover {
-    transform: scale(1.1);
-} */
 
 .room-desc {
     width: 55%;
@@ -375,7 +396,6 @@ form textarea {
     margin-left: 30px;
     border-bottom: 1px solid #3C52D5;
 }
-
 
 .room-card h1 {
     font-size: 32px;
@@ -401,14 +421,6 @@ form textarea {
     display: flex;
     justify-content: left;
 }
-
-
-
-.btn:hover {
-    border: 5px solid #3C52D5;
-    background-color: transparent;
-}
-
 
 .room-btn .btn {
     background-color: #3C52D5;
@@ -457,7 +469,6 @@ form textarea {
 
 @media (max-width: 767px) {
     .room-list-section {
-
     }
 
     .room-list-section h2 {

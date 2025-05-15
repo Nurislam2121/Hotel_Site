@@ -66,16 +66,13 @@ class Booking(models.Model):
     special_requests = models.TextField(blank=True, null=True, verbose_name="Особые пожелания")
 
     def clean(self):
-        if self.check_in_date >= self.check_out_date:
+        # Проверка дат
+        if self.check_in_date and self.check_out_date and self.check_in_date >= self.check_out_date:
             raise ValidationError("Дата заезда должна быть раньше даты выезда.")
-        overlapping_bookings = Booking.objects.filter(
-            room=self.room,
-            status__in=['pending', 'confirmed'],
-            check_in_date__lt=self.check_out_date,
-            check_out_date__gt=self.check_in_date
-        ).exclude(id=self.id)
-        if overlapping_bookings.exists():
-            raise ValidationError("Этот номер уже забронирован на выбранные даты.")
+        
+        # Проверка на максимальное количество гостей (8)
+        if self.guest_count and self.guest_count > 8:
+            raise ValidationError("Слишком много гостей. Максимум 8 человек на номер. Пожалуйста, забронируйте 2 или более номера.")
 
     def save(self, *args, **kwargs):
         self.clean()
