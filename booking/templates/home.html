@@ -17,7 +17,6 @@
                 <li><a href="{% url 'reviews' %}">Отзывы</a></li>
                 <li><a href="{% url 'contact' %}">Контакты</a></li>
                 <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
-                <li><a href="{% url 'logout' %}">Выйти</a></li>
             </ul>
         </nav>
         <div class="user-account">Личный кабинет</div>
@@ -122,10 +121,77 @@
             </div>
         </section>
     </main>
+
+<button class="booking-btn" onclick="openBookingModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        Забронировать
+    </button>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2>Забронировать номер</h2>
+            <form action="{% url 'booking' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="room_type">Тип номера:</label>
+                    <select id="room_type" name="room_type" required>
+                        <option value="" disabled selected>Выберите тип номера</option>
+                        <option value="standard">Стандарт</option>
+                        <option value="improved">Улучшенный</option>
+                        <option value="lux">Люкс</option>
+                        <option value="presidential">Президентский</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="check_in_date">Дата заезда:</label>
+                    <input type="date" id="check_in_date" name="check_in_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="check_out_date">Дата выезда:</label>
+                    <input type="date" id="check_out_date" name="check_out_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="guest_count">Количество гостей:</label>
+                    <input type="number" id="guest_count" name="guest_count" min="1" max="8" required>
+                </div>
+                <div class="form-group">
+                    <label for="special_requests">Особые пожелания:</label>
+                    <textarea id="special_requests" name="special_requests" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-anim-rep">Забронировать</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>г. Алматы, ул. Абая, 10a</p>
         <p>+7 (777) 123-45-67</p>
         <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
     </footer>
+
+    <script>
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'block';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

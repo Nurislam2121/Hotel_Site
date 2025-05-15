@@ -18,14 +18,14 @@
                 <li><a href="{% url 'reviews' %}">Отзывы</a></li>
                 <li><a href="{% url 'contact' %}">Контакты</a></li>
                 <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
-                <li><a href="{% url 'logout' %}">Выйти</a></li>
             </ul>
         </nav>
+        <div class="user-account">Личный кабинет</div>
     </header>
     <main>
         <section class="room-info-section">
             <div class="slider-container">
-                <button class="slider-btn prev"></button>
+                <button class="slider-btn prev">&lt;</button>
                 <div class="slider">
                     {% if room.images.all %}
                         {% for image in room.images.all %}
@@ -37,14 +37,28 @@
                         <div class="slide"><img src="{{ room.image.url }}" alt="{{ room.room_number }}"></div>
                     {% endif %}
                 </div>
-                <button class="slider-btn next">></button>
+                <button class="slider-btn next">&gt;</button>
+            </div>
+            <!-- Thumbnails -->
+            <div class="thumbnails-container">
+                <div class="thumbnails">
+                    {% if room.images.all %}
+                        {% for image in room.images.all %}
+                            <img src="{{ image.image.url }}" alt="{{ image.caption|default:'Room Thumbnail' }}" class="thumbnail" data-index="{{ forloop.counter0 }}">
+                        {% empty %}
+                            <img src="{{ room.image.url }}" alt="{{ room.room_number }}" class="thumbnail" data-index="0">
+                        {% endfor %}
+                    
+                    {% else %}
+                        <img src="{{ room.image.url }}" alt="{{ room.room_number }}" class="thumbnail" data-index="0">
+                    {% endif %}
+                </div>
             </div>
             <div class="room-info-details">
                 <h2>{{ room.room_type.name }}</h2>
-                <p>Номер: {{ room.room_number }}</p>
-                <p>Описание: {{ room.description }}</p>
+                <p>Описание: {{ room.description|default:"Описание отсутствует" }}</p>
                 <p>Цена за ночь: {{ room.price_per_night }} тг</p>
-                <p>Вместимость: {{ room.capacity }} человек</p>
+                <p>Вместимость: {{ room.room_type.capacity }} человек</p>
                 <a href="{% url 'booking' %}" class="btn">Забронировать</a>
             </div>
         </section>
@@ -54,10 +68,10 @@
         <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
     </footer>
 
-    
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
+        const thumbnails = document.querySelectorAll('.thumbnail');
         const totalSlides = slides.length;
         const slider = document.querySelector('.slider');
 
@@ -65,14 +79,29 @@
             if (index >= totalSlides) currentSlide = 0;
             else if (index < 0) currentSlide = totalSlides - 1;
             else currentSlide = index;
+
+            // Обновляем положение слайдера
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Обновляем активный thumbnail
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[currentSlide].classList.add('active');
         }
 
+        // Клик по кнопке "Вперёд"
         document.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
+
+        // Клик по кнопке "Назад"
         document.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
+
+        // Клик по thumbnail
+        
 
         // Автоматическая смена слайдов каждые 5 секунд
         setInterval(() => showSlide(currentSlide + 1), 5000);
+
+        // Инициализация: устанавливаем первый thumbnail активным
+        showSlide(0);
     </script>
 </body>
 </html>

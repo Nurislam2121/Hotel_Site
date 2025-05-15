@@ -22,7 +22,6 @@ header {
     font-weight: bold;
     color: #1C1C1C;
 }
-
 nav ul {
     list-style: none;
     display: flex;
@@ -30,16 +29,23 @@ nav ul {
     margin: 0;
     padding: 0;
 }
-
 nav ul li a {
     text-decoration: none;
     color: #1C1C1C;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
 }
-
 nav ul li a:hover {
-    color: #FF4081;
+    color: #3C52D5;
+}
+.user-account {
+    font-weight: 500;
+    color: #1C1C1C;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.user-account:hover {
+    color: #3C52D5;
 }
 
 main {
@@ -141,7 +147,7 @@ main {
 }
 
 .introduction-h2-1 {
-    color: #FF4081;
+    color: #3C52D5;
 }
 
 .introduction-h2-2 {
@@ -270,7 +276,7 @@ form textarea {
 }
 
 .contact-info a:hover {
-    color: #FF4081;
+    color: #3C52D5;
 }
 
 .gallery-section {
@@ -396,33 +402,44 @@ form textarea {
     justify-content: left;
 }
 
+
+
+.btn:hover {
+    border: 5px solid #3C52D5;
+    background-color: transparent;
+}
+
+
 .room-btn .btn {
-    background-color: #FF6F61;
-    padding: 10px 20px;
-    border: none;
-    font-size: 24px;
+    background-color: #3C52D5;
+    padding: 20px 30px;
+    border-radius: 2px;
+    border: 5px solid #3C52D5;
+    font-size: 16px;
     color: #fff;
     font-weight: 700;
     text-decoration: none;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: all 0.45s ease-in-out;
 }
 
 .room-btn .btn:hover {
-    background-color: #E65B50;
+    background-color: transparent;
+    color: #3C52D5;
 }
 
 .room-btn .btn.secondary {
-    background-color: #ADD8E6;
+    background-color: transparent;
     margin-left: 40px;
     font-weight: 500;
+    color: #3C52D5;
 }
 
 .room-btn .btn.secondary:hover {
-    background-color: #9BC3D3;
+    background-color: #3C52D5;
+    color: #fff;
 }
 
-/* Адаптация для планшетов (768px–1024px) */
 @media (max-width: 1024px) {
     .room-list {
         padding: 0 50px;
@@ -438,7 +455,6 @@ form textarea {
     }
 }
 
-/* Адаптация для телефонов (<768px) */
 @media (max-width: 767px) {
     .room-list-section {
 
