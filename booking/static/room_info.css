@@ -87,7 +87,7 @@ nav ul li a:hover {
 .slider-btn {
     position: absolute;
     top: 50%;
-    transform: translateY(-200%);
+    transform: translateY(-100%);
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: none;
@@ -151,6 +151,7 @@ nav ul li a:hover {
     justify-content: center;
     text-align: left;
     height: 500px;
+    min-width: 400px; /* Увеличиваем ширину на 100px */
 }
 
 .room-info-details h2 {
@@ -234,6 +235,7 @@ footer p {
     .room-info-details {
         width: 100%;
         padding: 20px;
+        min-width: 0; /* Отменяем min-width для адаптивности */
     }
 
     .room-info-details h2 {

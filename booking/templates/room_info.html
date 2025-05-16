@@ -25,19 +25,19 @@
     <main>
         <section class="room-info-section">
             <div class="slider-container">
-                <button class="slider-btn prev">&lt;</button>
+                <button class="slider-btn prev"><</button>
                 <div class="slider">
                     {% if room.images.all %}
                         {% for image in room.images.all %}
                             <div class="slide"><img src="{{ image.image.url }}" alt="{{ image.caption|default:'Room Image' }}"></div>
                         {% empty %}
-                            <div class="slide"><img src="{{ room.image.url }}" alt="{{ room.room_number }}"></div>
+                            <div class="slide"><img src="{{ room.room_type.image.url }}" alt="{{ room.room_type.name }}"></div>
                         {% endfor %}
                     {% else %}
-                        <div class="slide"><img src="{{ room.image.url }}" alt="{{ room.room_number }}"></div>
+                        <div class="slide"><img src="{{ room.room_type.image.url }}" alt="{{ room.room_type.name }}"></div>
                     {% endif %}
                 </div>
-                <button class="slider-btn next">&gt;</button>
+                <button class="slider-btn next">></button>
             </div>
             <!-- Thumbnails -->
             <div class="thumbnails-container">
@@ -46,11 +46,10 @@
                         {% for image in room.images.all %}
                             <img src="{{ image.image.url }}" alt="{{ image.caption|default:'Room Thumbnail' }}" class="thumbnail" data-index="{{ forloop.counter0 }}">
                         {% empty %}
-                            <img src="{{ room.image.url }}" alt="{{ room.room_number }}" class="thumbnail" data-index="0">
+                            <img src="{{ room.room_type.image.url }}" alt="{{ room.room_type.name }}" class="thumbnail" data-index="0">
                         {% endfor %}
-                    
                     {% else %}
-                        <img src="{{ room.image.url }}" alt="{{ room.room_number }}" class="thumbnail" data-index="0">
+                        <img src="{{ room.room_type.image.url }}" alt="{{ room.room_type.name }}" class="thumbnail" data-index="0">
                     {% endif %}
                 </div>
             </div>
@@ -80,27 +79,27 @@
             else if (index < 0) currentSlide = totalSlides - 1;
             else currentSlide = index;
 
-            // Обновляем положение слайдера
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-            // Обновляем активный thumbnail
             thumbnails.forEach(thumb => thumb.classList.remove('active'));
             thumbnails[currentSlide].classList.add('active');
         }
 
-        // Клик по кнопке "Вперёд"
         document.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
-
-        // Клик по кнопке "Назад"
         document.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
 
-        // Клик по thumbnail
-        
+        // Клик по миниатюре
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const index = parseInt(thumbnail.getAttribute('data-index'));
+                showSlide(index);
+            });
+        });
 
         // Автоматическая смена слайдов каждые 5 секунд
         setInterval(() => showSlide(currentSlide + 1), 5000);
 
-        // Инициализация: устанавливаем первый thumbnail активным
+        // Инициализация
         showSlide(0);
     </script>
 </body>

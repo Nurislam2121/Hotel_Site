@@ -9,7 +9,7 @@ class RoomType(models.Model):
     description = models.TextField(verbose_name="Описание")
     base_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Базовая цена за ночь")
     capacity = models.PositiveIntegerField(verbose_name="Вместимость")
-    image = models.ImageField(upload_to='room_types/', blank=True, null=True, verbose_name="Изображение типа номера")  # Новое поле
+    image = models.ImageField(upload_to='room_types/', blank=True, null=True, verbose_name="Изображение типа номера")
 
     def __str__(self):
         return self.name
@@ -17,6 +17,19 @@ class RoomType(models.Model):
     class Meta:
         verbose_name = "Тип номера"
         verbose_name_plural = "Типы номеров"
+
+# Изображения для типа номера
+class RoomTypeImage(models.Model):
+    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, related_name='type_images', verbose_name="Тип номера")
+    image = models.ImageField(upload_to='room_type_images/', verbose_name="Изображение")
+    caption = models.CharField(max_length=100, blank=True, verbose_name="Подпись")
+
+    def __str__(self):
+        return f"Изображение для {self.room_type.name}"
+
+    class Meta:
+        verbose_name = "Изображение типа номера"
+        verbose_name_plural = "Изображения типов номеров"
 
 # Номер
 class Room(models.Model):
@@ -67,11 +80,8 @@ class Booking(models.Model):
     special_requests = models.TextField(blank=True, null=True, verbose_name="Особые пожелания")
 
     def clean(self):
-        # Проверка дат
         if self.check_in_date and self.check_out_date and self.check_in_date >= self.check_out_date:
             raise ValidationError("Дата заезда должна быть раньше даты выезда.")
-        
-        # Проверка на максимальное количество гостей (8)
         if self.guest_count and self.guest_count > 8:
             raise ValidationError("Слишком много гостей. Максимум 8 человек на номер. Пожалуйста, забронируйте 2 или более номера.")
 
