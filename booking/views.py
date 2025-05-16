@@ -27,7 +27,7 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = EmailAuthenticationForm(request, data=request.POST)
+        form = EmailAuthenticationForm(data=request.POST)  # Передаем data для POST-запроса
         if form.is_valid():
             user = form.get_user()
             login(request, user)
@@ -38,7 +38,7 @@ def login_view(request):
             messages.error(request, "Неверный email или пароль.")
             logger.warning(f"Failed login attempt: {form.errors}")
     else:
-        form = EmailAuthenticationForm()
+        form = EmailAuthenticationForm()  # Пустая форма для GET-запроса
     return render(request, 'login.html', {'form': form})
 
 def logout_view(request):

@@ -33,3 +33,47 @@ DEBUG 2025-05-16 16:12:52,463 views Room info accessed: Room ID=459
 DEBUG 2025-05-16 16:12:54,331 views Room info accessed: Room ID=459
 DEBUG 2025-05-16 16:12:54,804 views Room info accessed: Room ID=459
 DEBUG 2025-05-16 16:12:57,489 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:17:47,268 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+INFO 2025-05-16 16:19:30,578 views User timur2006@gmail.com registered and logged in.
+DEBUG 2025-05-16 16:19:33,437 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+WARNING 2025-05-16 16:26:24,915 views Failed login attempt: <ul class="errorlist"><li>username<ul class="errorlist"><li>Обязательное поле.</li></ul></li></ul>
+INFO 2025-05-16 16:26:50,487 views User nurislamfigma@gmail.com logged in.
+INFO 2025-05-16 16:27:59,377 views User timur2006@gmail.com logged in.
+WARNING 2025-05-16 16:28:20,951 views Failed login attempt: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Неправильный email или пароль.</li></ul></li></ul>
+WARNING 2025-05-16 16:28:26,367 views Failed login attempt: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Неправильный email или пароль.</li></ul></li></ul>
+WARNING 2025-05-16 16:28:31,626 views Failed login attempt: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Неправильный email или пароль.</li></ul></li></ul>
+INFO 2025-05-16 16:28:34,679 views User timur2006@gmail.com logged in.
+INFO 2025-05-16 16:29:06,042 views User saintimur03@gmail.com registered and logged in.
+WARNING 2025-05-16 16:29:25,929 views Failed login attempt: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Неправильный email или пароль.</li></ul></li></ul>
+INFO 2025-05-16 16:29:29,375 views User saintimur03@gmail.com logged in.
+DEBUG 2025-05-16 16:29:42,650 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:29:56,015 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:30:09,710 views Form data: room_type=presidential, room_number=, check_in=2025-05-17, check_out=2025-05-20
+DEBUG 2025-05-16 16:30:09,715 views Available rooms for presidential: [<Room: Номер 400 (presidential)>, <Room: Номер 401 (presidential)>, <Room: Номер 402 (presidential)>, <Room: Номер 403 (presidential)>, <Room: Номер 404 (presidential)>, <Room: Номер 405 (presidential)>]
+INFO 2025-05-16 16:30:09,728 views Booking created: ID=8, Room=400, User=saintimur03@gmail.com
+DEBUG 2025-05-16 16:30:13,188 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:30:23,838 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:30:27,473 views Room info accessed: Room ID=567
+INFO 2025-05-16 16:30:55,291 views User nurislamfigma@gmail.com logged in.
+DEBUG 2025-05-16 16:31:03,006 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:36:16,670 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:36:19,778 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:36:31,198 views Room info accessed: Room ID=459
+WARNING 2025-05-16 16:37:22,662 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Дата заезда должна быть раньше даты выезда.</li><li>Дата заезда должна быть раньше даты выезда.</li></ul></li></ul>
+DEBUG 2025-05-16 17:31:53,588 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 17:32:02,624 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 17:32:12,924 views Room info accessed: Room ID=546
+WARNING 2025-05-16 17:32:42,602 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Дата заезда должна быть раньше даты выезда.</li><li>Дата заезда должна быть раньше даты выезда.</li></ul></li></ul>
+DEBUG 2025-05-16 17:32:49,026 views Form data: room_type=improved, room_number=, check_in=2025-05-17, check_out=2025-05-20
+DEBUG 2025-05-16 17:32:49,043 views Available rooms for improved: [<Room: Номер 200 (improved)>, <Room: Номер 201 (improved)>, <Room: Номер 202 (improved)>, <Room: Номер 203 (improved)>, <Room: Номер 204 (improved)>, <Room: Номер 205 (improved)>, <Room: Номер 206 (improved)>, <Room: Номер 207 (improved)>, <Room: Номер 208 (improved)>, <Room: Номер 209 (improved)>, <Room: Номер 210 (improved)>, <Room: Номер 211 (improved)>, <Room: Номер 212 (improved)>, <Room: Номер 213 (improved)>, <Room: Номер 214 (improved)>, <Room: Номер 215 (improved)>, <Room: Номер 216 (improved)>, <Room: Номер 217 (improved)>, <Room: Номер 218 (improved)>, <Room: Номер 219 (improved)>, <Room: Номер 220 (improved)>, <Room: Номер 221 (improved)>, <Room: Номер 222 (improved)>, <Room: Номер 223 (improved)>, <Room: Номер 224 (improved)>, <Room: Номер 225 (improved)>, <Room: Номер 226 (improved)>, <Room: Номер 227 (improved)>, <Room: Номер 228 (improved)>, <Room: Номер 229 (improved)>, <Room: Номер 230 (improved)>, <Room: Номер 231 (improved)>, <Room: Номер 232 (improved)>, <Room: Номер 233 (improved)>, <Room: Номер 234 (improved)>, <Room: Номер 235 (improved)>]
+INFO 2025-05-16 17:32:49,060 views Booking created: ID=9, Room=200, User=admin
+INFO 2025-05-16 17:33:08,458 views Booking confirmed: ID=9, Admin=admin
+INFO 2025-05-16 17:33:16,108 views Booking cancelled: ID=5, User=admin
+DEBUG 2025-05-16 17:33:19,505 views Room info accessed: Room ID=510
+INFO 2025-05-16 17:33:38,264 views Contact request submitted: Email=nurislamfigma@gmail.com
+INFO 2025-05-16 17:34:28,840 views User sherhan@gmail.com registered and logged in.
+DEBUG 2025-05-16 17:34:41,809 views Form data: room_type=improved, room_number=, check_in=2025-05-17, check_out=2025-05-23
+DEBUG 2025-05-16 17:34:41,826 views Available rooms for improved: [<Room: Номер 201 (improved)>, <Room: Номер 202 (improved)>, <Room: Номер 203 (improved)>, <Room: Номер 204 (improved)>, <Room: Номер 205 (improved)>, <Room: Номер 206 (improved)>, <Room: Номер 207 (improved)>, <Room: Номер 208 (improved)>, <Room: Номер 209 (improved)>, <Room: Номер 210 (improved)>, <Room: Номер 211 (improved)>, <Room: Номер 212 (improved)>, <Room: Номер 213 (improved)>, <Room: Номер 214 (improved)>, <Room: Номер 215 (improved)>, <Room: Номер 216 (improved)>, <Room: Номер 217 (improved)>, <Room: Номер 218 (improved)>, <Room: Номер 219 (improved)>, <Room: Номер 220 (improved)>, <Room: Номер 221 (improved)>, <Room: Номер 222 (improved)>, <Room: Номер 223 (improved)>, <Room: Номер 224 (improved)>, <Room: Номер 225 (improved)>, <Room: Номер 226 (improved)>, <Room: Номер 227 (improved)>, <Room: Номер 228 (improved)>, <Room: Номер 229 (improved)>, <Room: Номер 230 (improved)>, <Room: Номер 231 (improved)>, <Room: Номер 232 (improved)>, <Room: Номер 233 (improved)>, <Room: Номер 234 (improved)>, <Room: Номер 235 (improved)>]
+INFO 2025-05-16 17:34:41,833 views Booking created: ID=10, Room=201, User=sherhan@gmail.com
+INFO 2025-05-16 17:35:07,190 views Booking confirmed: ID=10, Admin=admin
+INFO 2025-05-16 17:35:40,147 views User nurislamfigma@gmail.com logged in.

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
 from .models import Booking, Review, ContactRequest, Room
@@ -58,8 +58,8 @@ class CustomUserCreationForm(UserCreationForm):
             user.save()
         return user
 
-class EmailAuthenticationForm(forms.Form):
-    email = forms.EmailField(
+class EmailAuthenticationForm(AuthenticationForm):
+    username = forms.EmailField(
         label="Email",
         widget=forms.EmailInput(attrs={'placeholder': 'Введите email'})
     )
@@ -68,22 +68,19 @@ class EmailAuthenticationForm(forms.Form):
         widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль'})
     )
 
+    def __init__(self, request=None, *args, **kwargs):
+        self.request = request
+        super().__init__(*args, **kwargs)
+
     def clean(self):
-        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
 
-        if not User.objects.filter(username=email).exists():
-            raise forms.ValidationError("Пользователь с таким email не найден.")
-
-        user = authenticate(username=email, password=password)
-        if not user:
-            raise forms.ValidationError("Неправильный email или пароль.")
-
-        self.user = user
+        if username and password:
+            self.user_cache = authenticate(self.request, username=username, password=password)
+            if self.user_cache is None:
+                raise forms.ValidationError("Неправильный email или пароль.")
         return self.cleaned_data
-
-    def get_user(self):
-        return self.user
 
 class BookingForm(forms.ModelForm):
     ROOM_TYPE_CHOICES = [
