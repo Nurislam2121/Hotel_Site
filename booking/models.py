@@ -9,6 +9,7 @@ class RoomType(models.Model):
     description = models.TextField(verbose_name="Описание")
     base_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Базовая цена за ночь")
     capacity = models.PositiveIntegerField(verbose_name="Вместимость")
+    image = models.ImageField(upload_to='room_types/', blank=True, null=True, verbose_name="Изображение типа номера")  # Новое поле
 
     def __str__(self):
         return self.name

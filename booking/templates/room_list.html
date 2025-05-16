@@ -29,8 +29,8 @@
         <div class="room-list">
           {% for room in rooms %}
           <div class="room-card">
-            {% if room.image %}
-            <img src="{{ room.image.url }}" alt="{{ room.room_number }}" /> 
+            {% if room.room_type.image %}
+            <img src="{{ room.room_type.image.url }}" alt="{{ room.room_type.name }}" /> 
             {% endif %}
             <div class="room-desc">
               <h1>{{ room.room_type.name }}</h1>

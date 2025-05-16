@@ -12,10 +12,10 @@ class Command(BaseCommand):
         # Создание типов номеров
         self.stdout.write("Создание типов номеров...")
         types = [
-            {'name': 'standard', 'description': 'Стандартный номер', 'base_price': 72000, 'capacity': 8},
-            {'name': 'improved', 'description': 'Улучшенный номер', 'base_price': 85000, 'capacity': 8},
-            {'name': 'lux', 'description': 'Номер люкс', 'base_price': 123000, 'capacity': 8},
-            {'name': 'presidential', 'description': 'Президентский номер', 'base_price': 250000, 'capacity': 8},
+            {'name': 'standard', 'description': 'Стандартный номер', 'base_price': 72000, 'capacity': 8, 'image': 'room_types/standard.jpg'},
+            {'name': 'improved', 'description': 'Улучшенный номер', 'base_price': 85000, 'capacity': 8, 'image': 'room_types/improved.jpg'},
+            {'name': 'lux', 'description': 'Номер люкс', 'base_price': 123000, 'capacity': 8, 'image': 'room_types/lux.jpg'},
+            {'name': 'presidential', 'description': 'Президентский номер', 'base_price': 250000, 'capacity': 8, 'image': 'room_types/presidential.jpg'},
         ]
         for room_type in types:
             obj, created = RoomType.objects.get_or_create(
@@ -23,7 +23,8 @@ class Command(BaseCommand):
                 defaults={
                     'description': room_type['description'],
                     'base_price': room_type['base_price'],
-                    'capacity': room_type['capacity']
+                    'capacity': room_type['capacity'],
+                    'image': room_type['image']
                 }
             )
             self.stdout.write(f"Тип {room_type['name']} {'создан' if created else 'уже существует'}")
