@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.home_view, name='home'),
     path('booking/', views.booking_view, name='booking'),
     path('my-bookings/', views.my_bookings_view, name='my_bookings'),
+    path('booking/cancel/<int:booking_id>/', views.cancel_booking, name='cancel_booking'),  # Добавлен маршрут для отмены
     path('reviews/', views.reviews_view, name='reviews'),
     path('contact/', views.contact_view, name='contact'),
     path('rooms/', views.room_list_view, name='room_list'),

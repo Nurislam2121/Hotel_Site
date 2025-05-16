@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои брони - Luma Hotel</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'my_bookings.css' %}">
 </head>
 <body>
     <header>
@@ -26,18 +26,37 @@
         <section class="bookings-section">
             <h2>Мои бронирования</h2>
             {% if bookings %}
-                <ul>
-                {% for booking in bookings %}
-                    <li>
-                        Номер: {{ booking.room.room_number }} ({{ booking.room.room_type.name }})<br>
-                        Даты: {{ booking.check_in_date }} - {{ booking.check_out_date }}<br>
-                        Статус: {{ booking.get_status_display }}<br>
-                        Стоимость: {{ booking.total_price }}<br>
-                    </li>
-                {% endfor %}
-                </ul>
+                <div class="bookings-list">
+                    {% for booking in bookings %}
+                        <div class="booking-card {% if booking.status == 'cancelled' %}cancelled{% endif %}">
+                            <div class="booking-header">
+                                <h3>Бронь #{{ booking.id }}</h3>
+                                <span class="status status-{{ booking.status }}">{{ booking.get_status_display }}</span>
+                            </div>
+                            <div class="booking-details">
+                                <p><strong>Номер:</strong> {{ booking.room.room_number }} ({{ booking.room.room_type.name }})</p>
+                                <p><strong>Даты:</strong> {{ booking.check_in_date }} - {{ booking.check_out_date }}</p>
+                                <p><strong>Количество гостей:</strong> {{ booking.guest_count }}</p>
+                                <p><strong>Стоимость:</strong> {{ booking.total_price }} тг</p>
+                                {% if booking.special_requests %}
+                                    <p><strong>Особые пожелания:</strong> {{ booking.special_requests }}</p>
+                                {% endif %}
+                                <p><strong>Дата бронирования:</strong> {{ booking.created_at|date:"d.m.Y H:i" }}</p>
+                            </div>
+                            <div class="booking-actions">
+                                {% if booking.status == 'pending' %}
+                                    <form action="{% url 'cancel_booking' booking.id %}" method="post" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn cancel-btn" onclick="return confirm('Вы уверены, что хотите отменить бронирование?');">Отменить</button>
+                                    </form>
+                                {% endif %}
+                                <a href="{% url 'room_info' booking.room.id %}" class="btn view-btn">Подробнее о номере</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             {% else %}
-                <p>У вас пока нет бронирований.</p>
+                <p class="no-bookings">У вас пока нет бронирований.</p>
             {% endif %}
         </section>
     </main>
