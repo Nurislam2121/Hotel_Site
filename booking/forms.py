@@ -58,7 +58,6 @@ class CustomUserCreationForm(UserCreationForm):
             user.save()
         return user
 
-# Форма логина (уже есть)
 class EmailAuthenticationForm(forms.Form):
     email = forms.EmailField(
         label="Email",
@@ -86,7 +85,6 @@ class EmailAuthenticationForm(forms.Form):
     def get_user(self):
         return self.user
 
-# Форма бронирования
 class BookingForm(forms.ModelForm):
     ROOM_TYPE_CHOICES = [
         ('', 'Выберите тип номера'),
@@ -121,16 +119,13 @@ class BookingForm(forms.ModelForm):
 
         print(f"Cleaning form: room_type={room_type}, room_number={room_number}, check_in={check_in_date}, check_out={check_out_date}")
 
-        # Проверка типа номера
         if not room_type:
             raise ValidationError("Пожалуйста, выберите тип номера.")
 
-        # Проверка дат
         if check_in_date and check_out_date:
             if check_in_date >= check_out_date:
                 raise ValidationError("Дата заезда должна быть раньше даты выезда.")
 
-        # Проверка номера комнаты, если указан
         if room_number:
             print(f"Checking room: type={room_type}, number={room_number}")
             room = Room.objects.filter(
@@ -140,7 +135,6 @@ class BookingForm(forms.ModelForm):
             ).first()
             if not room:
                 raise ValidationError(f"Номер {room_number} для типа '{room_type}' недоступен или не существует.")
-            # Проверяем пересечение бронирований
             overlapping_bookings = Booking.objects.filter(
                 room=room,
                 status__in=['pending', 'confirmed'],
@@ -151,12 +145,10 @@ class BookingForm(forms.ModelForm):
                 raise ValidationError(f"Номер {room_number} уже забронирован на выбранные даты.")
             cleaned_data['selected_room'] = room
         else:
-            # Для случая случайного выбора номера оставляем поле пустым, оно будет заполнено в представлении
             pass
 
         return cleaned_data
 
-# Форма отзыва
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
@@ -166,7 +158,6 @@ class ReviewForm(forms.ModelForm):
             'comment': forms.Textarea(attrs={'placeholder': 'Ваш отзыв'}),
         }
 
-# Форма запроса на обратную связь
 class ContactRequestForm(forms.ModelForm):
     class Meta:
         model = ContactRequest

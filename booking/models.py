@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-# Тип номера
 class RoomType(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название типа номера")
     description = models.TextField(verbose_name="Описание")
@@ -18,7 +17,6 @@ class RoomType(models.Model):
         verbose_name = "Тип номера"
         verbose_name_plural = "Типы номеров"
 
-# Изображения для типа номера
 class RoomTypeImage(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, related_name='type_images', verbose_name="Тип номера")
     image = models.ImageField(upload_to='room_type_images/', verbose_name="Изображение")
@@ -31,7 +29,6 @@ class RoomTypeImage(models.Model):
         verbose_name = "Изображение типа номера"
         verbose_name_plural = "Изображения типов номеров"
 
-# Номер
 class Room(models.Model):
     room_number = models.CharField(max_length=10, unique=True, verbose_name="Номер комнаты")
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name="Тип номера")
@@ -48,7 +45,6 @@ class Room(models.Model):
         verbose_name = "Номер"
         verbose_name_plural = "Номера"
 
-# Дополнительные изображения номера
 class RoomImage(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='images', verbose_name="Номер")
     image = models.ImageField(upload_to='room_images/', verbose_name="Изображение")
@@ -61,7 +57,6 @@ class RoomImage(models.Model):
         verbose_name = "Изображение номера"
         verbose_name_plural = "Изображения номеров"
 
-# Бронирование
 class Booking(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Ожидает подтверждения'),
@@ -96,7 +91,6 @@ class Booking(models.Model):
         verbose_name = "Бронирование"
         verbose_name_plural = "Бронирования"
 
-# Отзыв
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Бронирование")
@@ -112,7 +106,6 @@ class Review(models.Model):
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
 
-# Фотогалерея
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery/', verbose_name="Изображение")
     title = models.CharField(max_length=100, blank=True, null=True, verbose_name="Название")
@@ -126,7 +119,6 @@ class Gallery(models.Model):
         verbose_name = "Фотогалерея"
         verbose_name_plural = "Фотогалерея"
 
-# Дополнительная услуга
 class Service(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название услуги")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Стоимость")
@@ -139,7 +131,6 @@ class Service(models.Model):
         verbose_name = "Услуга"
         verbose_name_plural = "Услуги"
 
-# Связь бронирования с услугами
 class BookingService(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, verbose_name="Бронирование")
     service = models.ForeignKey(Service, on_delete=models.CASCADE, verbose_name="Услуга")
@@ -152,7 +143,6 @@ class BookingService(models.Model):
         verbose_name = "Услуга бронирования"
         verbose_name_plural = "Услуги бронирований"
 
-# Запрос на обратную связь
 class ContactRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Пользователь")
     name = models.CharField(max_length=100, verbose_name="Имя")

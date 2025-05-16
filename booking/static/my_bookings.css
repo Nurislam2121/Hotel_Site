@@ -10,6 +10,16 @@ body {
     color: #1C1C1C;
 }
 
+a {
+    text-decoration: none;
+    color: #1C1C1C;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #3C52D5;
+}
+
 header {
     display: flex;
     align-items: center;

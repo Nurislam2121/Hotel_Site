@@ -10,6 +10,17 @@ body {
     color: #1C1C1C;
 }
 
+a {
+    text-decoration: none;
+    color: #1C1C1C;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #3C52D5;
+}
+
+
 header {
     display: flex;
     align-items: center;
@@ -151,7 +162,7 @@ nav ul li a:hover {
     justify-content: center;
     text-align: left;
     height: 500px;
-    min-width: 400px; /* Увеличиваем ширину на 100px */
+    min-width: 400px; 
 }
 
 .room-info-details h2 {
@@ -189,110 +200,9 @@ nav ul li a:hover {
 }
 
 footer {
-    padding: 20px;
-    text-align: center;
+    padding: 30px 150px;
+    display: flex;
+    justify-content: space-between;
     background-color: #E8EAF6;
-    margin-top: 50px;
-}
-
-footer p {
-    margin-bottom: 10px;
-    color: #1C1C1C;
-}
-
-@media (max-width: 1024px) {
-    .room-info-section {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .slider-container {
-        width: 100%;
-    }
-
-    .slide {
-        height: 300px;
-    }
-
-    .thumbnails-container {
-        flex-direction: row;
-        max-height: none;
-        overflow-x: auto;
-        white-space: nowrap;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    .thumbnails {
-        flex-direction: row;
-    }
-
-    .thumbnail {
-        width: 60px;
-        height: 40px;
-    }
-
-    .room-info-details {
-        width: 100%;
-        padding: 20px;
-        min-width: 0; /* Отменяем min-width для адаптивности */
-    }
-
-    .room-info-details h2 {
-        font-size: 1.5em;
-    }
-
-    .room-info-details p {
-        font-size: 14px;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 767px) {
-    header {
-        flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .room-info-section {
-        padding: 10px;
-    }
-
-    .slide {
-        height: 200px;
-    }
-
-    .thumbnails-container {
-        flex-direction: row;
-        padding: 5px 0;
-    }
-
-    .thumbnail {
-        width: 50px;
-        height: 35px;
-    }
-
-    .room-info-details h2 {
-        font-size: 1.2em;
-    }
-
-    .room-info-details p {
-        font-size: 12px;
-    }
-
-    .btn {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
+    flex-direction: row;
 }

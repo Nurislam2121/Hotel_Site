@@ -8,7 +8,6 @@ from .forms import CustomUserCreationForm, EmailAuthenticationForm, BookingForm,
 from .models import Room, RoomType, Review, Gallery, Booking
 import logging
 
-# Настройка логирования
 logger = logging.getLogger(__name__)
 
 def register_view(request):
@@ -73,11 +72,9 @@ def booking_view(request):
                 logger.warning("Invalid dates: check-out date is not after check-in date.")
                 return render(request, 'booking.html', {'form': form})
 
-            # Если номер указан, он уже проверен в форме
             if room_number:
                 booking.room = form.cleaned_data.get('selected_room')
             else:
-                # Выбираем доступный номер из указанного типа
                 available_rooms = Room.objects.filter(
                     room_type__name__iexact=room_type,
                     is_available=True
@@ -95,13 +92,11 @@ def booking_view(request):
                     return render(request, 'booking.html', {'form': form})
                 booking.room = available_rooms.first()
 
-            # Проверяем, что room установлен
             if not booking.room:
                 messages.error(request, "Не удалось выбрать номер. Пожалуйста, попробуйте снова.")
                 logger.error("Failed to assign a room during booking.")
                 return render(request, 'booking.html', {'form': form})
 
-            # Рассчитываем стоимость
             booking.total_price = booking.room.price_per_night * nights
             booking.save()
             messages.success(request, f"Бронирование успешно создано! Вам назначен номер {booking.room.room_number}.")
@@ -145,7 +140,7 @@ def confirm_booking(request, booking_id):
         else:
             messages.error(request, 'Нельзя подтвердить бронирование с этим статусом.')
             logger.warning(f"Attempt to confirm non-pending booking: ID={booking.id}, Status={booking.status}")
-        return redirect('admin:booking_booking_changelist')  # Перенаправляем в админку
+        return redirect('admin:booking_booking_changelist') 
     return render(request, 'confirm_booking.html', {'booking': booking})
 
 def reviews_view(request):

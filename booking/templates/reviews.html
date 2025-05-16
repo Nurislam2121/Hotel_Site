@@ -20,7 +20,7 @@
                 <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
             </ul>
         </nav>
-        <div class="user-account">Личный кабинет</div>
+        <div class="user-account"><a href="{% url 'login' %}">Выйти</a></div>
     </header>
     <main>
         <section class="reviews-section">
@@ -38,7 +38,7 @@
                         <div class="review-card">
                             <div class="review-header">
                                 <h3>{{ review.user.username }}</h3>
-                                <span class="rating">★ {% for i in "12345"|make_list %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+                                <span class="rating">Оценка {% for i in "12345"|make_list %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
                                 <p class="date">{{ review.created_at|date:"d.m.Y H:i" }}</p>
                             </div>
                             <p class="comment">{{ review.comment }}</p>
@@ -64,6 +64,7 @@
     </main>
     <footer>
         <p>г. Алматы, ул. Абая, 10a</p>
+        <p>+7 (777) 123-45-67</p>
         <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
     </footer>
 </body>

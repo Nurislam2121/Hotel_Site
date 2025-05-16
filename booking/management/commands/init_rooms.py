@@ -5,13 +5,11 @@ class Command(BaseCommand):
     help = 'Initializes room types, rooms, and their images in the database'
 
     def handle(self, *args, **options):
-        # Удаляем существующие данные
         RoomTypeImage.objects.all().delete()
         RoomImage.objects.all().delete()
         RoomType.objects.all().delete()
         Room.objects.all().delete()
 
-        # Создание типов номеров
         self.stdout.write("Создание типов номеров...")
         types = [
             {'name': 'standard', 'description': 'Стандартный номер', 'base_price': 72000, 'capacity': 8, 'image': 'room_types/standard.jpg'},
@@ -31,7 +29,6 @@ class Command(BaseCommand):
             )
             self.stdout.write(f"Тип {room_type['name']} {'создан' if created else 'уже существует'}")
 
-        # Создание изображений для типов номеров
         self.stdout.write("Создание изображений для типов номеров...")
         image_sets = {
             'standard': [
@@ -81,7 +78,6 @@ class Command(BaseCommand):
                 )
             self.stdout.write(f"Изображения для {room_type.name} созданы")
 
-        # Создание номеров и копирование изображений
         self.stdout.write("Создание номеров...")
         standard = RoomType.objects.get(name='standard')
         improved = RoomType.objects.get(name='improved')
@@ -102,7 +98,6 @@ class Command(BaseCommand):
                 }
             )
             if created:
-                # Копируем изображения из RoomTypeImage в RoomImage
                 for type_image in standard.type_images.all():
                     RoomImage.objects.get_or_create(
                         room=room,
@@ -111,7 +106,6 @@ class Command(BaseCommand):
                     )
         self.stdout.write("Стандартные номера созданы")
 
-        # Улучшенный (200-235)
         self.stdout.write("Создание улучшенных номеров (200-235)...")
         for i in range(200, 236):
             room, created = Room.objects.get_or_create(
@@ -133,7 +127,6 @@ class Command(BaseCommand):
                     )
         self.stdout.write("Улучшенные номера созданы")
 
-        # Люкс (300-320)
         self.stdout.write("Создание номеров люкс (300-320)...")
         for i in range(300, 321):
             room, created = Room.objects.get_or_create(
@@ -155,7 +148,6 @@ class Command(BaseCommand):
                     )
         self.stdout.write("Номера люкс созданы")
 
-        # Президентский (400-405)
         self.stdout.write("Создание президентских номеров (400-405)...")
         for i in range(400, 406):
             room, created = Room.objects.get_or_create(

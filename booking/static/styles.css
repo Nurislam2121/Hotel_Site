@@ -8,6 +8,17 @@ body {
     background-color: #F4F4F4;
 }
 
+a {
+    text-decoration: none;
+    color: #1C1C1C;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #3C52D5;
+}
+
+
 header {
     display: flex;
     align-items: center;
@@ -452,6 +463,14 @@ form textarea {
     color: #fff;
 }
 
+footer {
+    padding: 30px 150px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #E8EAF6;
+    flex-direction: row;
+}
+
 @media (max-width: 1024px) {
     .room-list {
         padding: 0 50px;
@@ -517,7 +536,6 @@ footer p {
     margin-bottom: 10px;
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .contact-con, .gallery-con {
         flex-direction: column;

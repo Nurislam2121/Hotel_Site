@@ -20,7 +20,7 @@
                 <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
             </ul>
         </nav>
-        <div class="user-account"><a>Личный кабинет</a></div>
+        <div class="user-account"><a href="{% url 'login' %}">Выйти</a></div>
     </header>
     <main>
       <section class="room-list-section">
@@ -50,5 +50,10 @@
         {% endif %}
       </section>
     </main>
+    <footer>
+        <p>г. Алматы, ул. Абая, 10a</p>
+        <p>+7 (777) 123-45-67</p>
+        <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
+    </footer>
   </body>
 </html>

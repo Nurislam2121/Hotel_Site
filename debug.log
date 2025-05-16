@@ -12,3 +12,24 @@ DEBUG 2025-05-16 10:58:15,130 views Room info accessed: Room ID=567
 INFO 2025-05-16 10:58:36,229 views Booking confirmed: ID=6, Admin=admin
 DEBUG 2025-05-16 10:58:45,833 views Room info accessed: Room ID=567
 INFO 2025-05-16 11:02:54,660 views Review submitted: User=admin, Rating=2
+DEBUG 2025-05-16 13:16:23,769 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 13:16:26,689 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 13:17:01,698 views Form data: room_type=lux, room_number=, check_in=2025-05-21, check_out=2025-05-22
+DEBUG 2025-05-16 13:17:01,708 views Available rooms for lux: [<Room: Номер 300 (lux)>, <Room: Номер 301 (lux)>, <Room: Номер 302 (lux)>, <Room: Номер 303 (lux)>, <Room: Номер 304 (lux)>, <Room: Номер 305 (lux)>, <Room: Номер 306 (lux)>, <Room: Номер 307 (lux)>, <Room: Номер 308 (lux)>, <Room: Номер 309 (lux)>, <Room: Номер 310 (lux)>, <Room: Номер 311 (lux)>, <Room: Номер 312 (lux)>, <Room: Номер 313 (lux)>, <Room: Номер 314 (lux)>, <Room: Номер 315 (lux)>, <Room: Номер 316 (lux)>, <Room: Номер 317 (lux)>, <Room: Номер 318 (lux)>, <Room: Номер 319 (lux)>, <Room: Номер 320 (lux)>]
+INFO 2025-05-16 13:17:01,713 views Booking created: ID=7, Room=300, User=admin
+DEBUG 2025-05-16 13:17:41,353 views Room info accessed: Room ID=546
+INFO 2025-05-16 13:17:44,493 views Booking cancelled: ID=7, User=admin
+DEBUG 2025-05-16 13:55:52,161 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 13:58:47,131 views Room info accessed: Room ID=567
+DEBUG 2025-05-16 14:02:42,939 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 14:04:14,630 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 14:04:15,571 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 14:04:23,261 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 16:00:35,617 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:02:13,941 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:08:52,023 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:12:51,356 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-16 16:12:52,463 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 16:12:54,331 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 16:12:54,804 views Room info accessed: Room ID=459
+DEBUG 2025-05-16 16:12:57,489 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]

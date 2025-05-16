@@ -20,7 +20,7 @@
                 <li><a href="{% url 'my_bookings' %}">Мои брони</a></li>
             </ul>
         </nav>
-        <div class="user-account">Личный кабинет</div>
+        <div class="user-account"><a href="{% url 'login' %}">Выйти</a></div>
     </header>
     <main>
         <section class="room-info-section">
@@ -39,7 +39,6 @@
                 </div>
                 <button class="slider-btn next">></button>
             </div>
-            <!-- Thumbnails -->
             <div class="thumbnails-container">
                 <div class="thumbnails">
                     {% if room.images.all %}
@@ -64,6 +63,7 @@
     </main>
     <footer>
         <p>г. Алматы, ул. Абая, 10a</p>
+        <p>+7 (777) 123-45-67</p>
         <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
     </footer>
 
@@ -88,7 +88,6 @@
         document.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
         document.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
 
-        // Клик по миниатюре
         thumbnails.forEach(thumbnail => {
             thumbnail.addEventListener('click', () => {
                 const index = parseInt(thumbnail.getAttribute('data-index'));
@@ -96,10 +95,8 @@
             });
         });
 
-        // Автоматическая смена слайдов каждые 5 секунд
         setInterval(() => showSlide(currentSlide + 1), 5000);
 
-        // Инициализация
         showSlide(0);
     </script>
 </body>
