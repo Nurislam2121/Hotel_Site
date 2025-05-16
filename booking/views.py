@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm, EmailAuthenticationForm, BookingForm, ReviewForm, ContactRequestForm
-from .models import Room, Review, Gallery, Booking
+from .models import Room, RoomType, Review, Gallery, Booking
 import random
 
 def register_view(request):
@@ -129,7 +129,17 @@ def contact_view(request):
     return render(request, 'contact.html', {'form': form})
 
 def room_list_view(request):
-    rooms = Room.objects.filter(is_available=True)
+    # Получаем все типы номеров
+    room_types = RoomType.objects.all()
+    
+    # Выбираем по одному номеру для каждого типа
+    rooms = []
+    for room_type in room_types:
+        # Берем первый доступный номер для данного типа
+        room = Room.objects.filter(room_type=room_type, is_available=True).first()
+        if room:
+            rooms.append(room)
+
     return render(request, 'room_list.html', {'rooms': rooms})
 
 def room_info_view(request, pk):
