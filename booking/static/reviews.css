@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #F4F4F4;
+    color: #1C1C1C;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #E8EAF6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1C1C1C;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #1C1C1C;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+nav ul li a:hover {
+    color: #3C52D5;
+}
+.user-account {
+    font-weight: 500;
+    color: #1C1C1C;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.user-account:hover {
+    color: #3C52D5;
+}
+
+.reviews-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.reviews-section h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.messages {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+}
+
+.message {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.message-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.message-error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.2s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.review-header h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #1C1C1C;
+}
+
+.rating {
+    font-size: 1em;
+    color: #f0ad4e;
+}
+
+.date {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.comment {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.5;
+}
+
+.no-reviews {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.review-form {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.review-form h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #1C1C1C;
+}
+
+.review-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-form label {
+    font-weight: 500;
+    color: #1C1C1C;
+}
+
+.review-form input,
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.review-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    background-color: #3C52D5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2a3eb1;
+}
+
+.login-prompt {
+    text-align: center;
+    font-size: 1.1em;
+    color: #666;
+    margin-top: 20px;
+}
+
+.login-prompt a {
+    color: #3C52D5;
+    text-decoration: none;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .reviews-section {
+        padding: 20px 10px;
+    }
+
+    .reviews-section h2 {
+        font-size: 1.5em;
+    }
+
+    .review-card {
+        padding: 15px;
+    }
+
+    .review-header h3 {
+        font-size: 1em;
+    }
+
+    .rating {
+        font-size: 0.9em;
+    }
+
+    .date {
+        font-size: 0.8em;
+    }
+
+    .comment {
+        font-size: 0.9em;
+    }
+
+    .review-form {
+        padding: 15px;
+    }
+
+    .review-form h3 {
+        font-size: 1.2em;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+}

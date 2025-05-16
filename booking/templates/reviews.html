@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отзывы - Luma Hotel</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews.css' %}">
 </head>
 <body>
     <header>
@@ -26,29 +26,45 @@
         <section class="reviews-section">
             <h2>Отзывы наших гостей</h2>
             {% if messages %}
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-            {% if reviews %}
-                <div class="reviews-con">
-                    {% for review in reviews %}
-                        <div class="review-card">
-                            <h4>"{{ review.comment }}"</h4>
-                            <span>{{ review.user.first_name }} {{ review.user.last_name }}, {{ review.rating }} звезд</span>
-                        </div>
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="message {{ message.tags }}">{{ message }}</p>
                     {% endfor %}
                 </div>
-            {% else %}
-                <p>Пока нет отзывов.</p>
             {% endif %}
-            <h2>Оставьте свой отзыв</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn">Отправить отзыв</button>
-            </form>
+            <div class="reviews-list">
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="review-card">
+                            <div class="review-header">
+                                <h3>{{ review.user.username }}</h3>
+                                <span class="rating">★ {% for i in "12345"|make_list %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+                                <p class="date">{{ review.created_at|date:"d.m.Y H:i" }}</p>
+                            </div>
+                            <p class="comment">{{ review.comment }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-reviews">Пока нет отзывов.</p>
+                {% endif %}
+            </div>
+            {% if user.is_authenticated %}
+                <div class="review-form">
+                    <h3>Оставить отзыв</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn submit-btn">Отправить</button>
+                    </form>
+                </div>
+            {% else %}
+                <p class="login-prompt">Пожалуйста, <a href="{% url 'login' %}">войдите</a>, чтобы оставить отзыв.</p>
+            {% endif %}
         </section>
     </main>
+    <footer>
+        <p>г. Алматы, ул. Абая, 10a</p>
+        <p>© Гостиница Luma Almaty 2025, Официальный сайт</p>
+    </footer>
 </body>
 </html>

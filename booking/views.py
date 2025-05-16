@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm, EmailAuthenticationForm, BookingForm, ReviewForm, ContactRequestForm
 from .models import Room, RoomType, Review, Gallery, Booking
@@ -92,7 +93,6 @@ def booking_view(request):
                     messages.error(request, "Нет доступных номеров для выбранного типа на эти даты.")
                     logger.warning(f"No available rooms for room_type={room_type} on dates {check_in_date} to {check_out_date}.")
                     return render(request, 'booking.html', {'form': form})
-                # Выбираем первый доступный номер вместо случайного для предсказуемости
                 booking.room = available_rooms.first()
 
             # Проверяем, что room установлен
@@ -133,6 +133,21 @@ def cancel_booking(request, booking_id):
             logger.warning(f"Attempt to cancel non-pending booking: ID={booking.id}, Status={booking.status}")
     return redirect('my_bookings')
 
+@staff_member_required
+def confirm_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    if request.method == 'POST':
+        if booking.status == 'pending':
+            booking.status = 'confirmed'
+            booking.save()
+            messages.success(request, f'Бронирование #{booking.id} успешно подтверждено.')
+            logger.info(f"Booking confirmed: ID={booking.id}, Admin={request.user.username}")
+        else:
+            messages.error(request, 'Нельзя подтвердить бронирование с этим статусом.')
+            logger.warning(f"Attempt to confirm non-pending booking: ID={booking.id}, Status={booking.status}")
+        return redirect('admin:booking_booking_changelist')  # Перенаправляем в админку
+    return render(request, 'confirm_booking.html', {'booking': booking})
+
 def reviews_view(request):
     reviews = Review.objects.filter(is_approved=True).order_by('-created_at')
     if request.method == 'POST':
@@ -171,10 +186,7 @@ def contact_view(request):
     return render(request, 'contact.html', {'form': form})
 
 def room_list_view(request):
-    # Получаем все типы номеров
     room_types = RoomType.objects.all()
-    
-    # Выбираем по одному номеру для каждого типа
     rooms = []
     for room_type in room_types:
         room = Room.objects.filter(room_type=room_type, is_available=True).first()

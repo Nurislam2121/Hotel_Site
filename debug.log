@@ -1,0 +1,14 @@
+DEBUG 2025-05-16 10:52:59,555 views Room info accessed: Room ID=479
+DEBUG 2025-05-16 10:53:30,078 views Form data: room_type=improved, room_number=, check_in=2025-05-26, check_out=2025-05-28
+DEBUG 2025-05-16 10:53:30,093 views Available rooms for improved: [<Room: Номер 200 (improved)>, <Room: Номер 201 (improved)>, <Room: Номер 202 (improved)>, <Room: Номер 203 (improved)>, <Room: Номер 204 (improved)>, <Room: Номер 205 (improved)>, <Room: Номер 206 (improved)>, <Room: Номер 207 (improved)>, <Room: Номер 208 (improved)>, <Room: Номер 209 (improved)>, <Room: Номер 210 (improved)>, <Room: Номер 211 (improved)>, <Room: Номер 212 (improved)>, <Room: Номер 213 (improved)>, <Room: Номер 214 (improved)>, <Room: Номер 215 (improved)>, <Room: Номер 216 (improved)>, <Room: Номер 217 (improved)>, <Room: Номер 218 (improved)>, <Room: Номер 219 (improved)>, <Room: Номер 220 (improved)>, <Room: Номер 221 (improved)>, <Room: Номер 222 (improved)>, <Room: Номер 223 (improved)>, <Room: Номер 224 (improved)>, <Room: Номер 225 (improved)>, <Room: Номер 226 (improved)>, <Room: Номер 227 (improved)>, <Room: Номер 228 (improved)>, <Room: Номер 229 (improved)>, <Room: Номер 230 (improved)>, <Room: Номер 231 (improved)>, <Room: Номер 232 (improved)>, <Room: Номер 233 (improved)>, <Room: Номер 234 (improved)>, <Room: Номер 235 (improved)>]
+INFO 2025-05-16 10:53:30,099 views Booking created: ID=5, Room=200, User=admin
+DEBUG 2025-05-16 10:53:36,097 views Room info accessed: Room ID=510
+INFO 2025-05-16 10:54:09,361 views Booking cancelled: ID=4, User=admin
+DEBUG 2025-05-16 10:54:35,860 views Form data: room_type=presidential, room_number=, check_in=2025-05-23, check_out=2025-05-26
+DEBUG 2025-05-16 10:54:35,866 views Available rooms for presidential: [<Room: Номер 400 (presidential)>, <Room: Номер 401 (presidential)>, <Room: Номер 402 (presidential)>, <Room: Номер 403 (presidential)>, <Room: Номер 404 (presidential)>, <Room: Номер 405 (presidential)>]
+INFO 2025-05-16 10:54:35,872 views Booking created: ID=6, Room=400, User=admin
+DEBUG 2025-05-16 10:54:45,526 views Room info accessed: Room ID=567
+DEBUG 2025-05-16 10:58:15,130 views Room info accessed: Room ID=567
+INFO 2025-05-16 10:58:36,229 views Booking confirmed: ID=6, Admin=admin
+DEBUG 2025-05-16 10:58:45,833 views Room info accessed: Room ID=567
+INFO 2025-05-16 11:02:54,660 views Review submitted: User=admin, Rating=2
