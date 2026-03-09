@@ -77,3 +77,63 @@ DEBUG 2025-05-16 17:34:41,826 views Available rooms for improved: [<Room: Номер 
 INFO 2025-05-16 17:34:41,833 views Booking created: ID=10, Room=201, User=sherhan@gmail.com
 INFO 2025-05-16 17:35:07,190 views Booking confirmed: ID=10, Admin=admin
 INFO 2025-05-16 17:35:40,147 views User nurislamfigma@gmail.com logged in.
+DEBUG 2025-05-19 16:07:08,815 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:08:16,028 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:08:18,120 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:08:19,077 views Room info accessed: Room ID=459
+WARNING 2025-05-19 16:15:35,090 views Failed registration attempt: <ul class="errorlist"><li>email<ul class="errorlist"><li>Введите правильный адрес электронной почты.</li></ul></li><li>password2<ul class="errorlist"><li>Введённый пароль слишком широко распространён.</li><li>Введённый пароль состоит только из цифр.</li></ul></li></ul>
+WARNING 2025-05-19 16:16:08,082 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist"><li>Введённый пароль слишком широко распространён.</li><li>Введённый пароль состоит только из цифр.</li></ul></li></ul>
+WARNING 2025-05-19 16:16:27,085 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist"><li>Введенные пароли не совпадают.</li></ul></li></ul>
+WARNING 2025-05-19 16:20:51,577 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist"><li>Введённый пароль слишком короткий. Он должен содержать как минимум 8 символов.</li></ul></li></ul>
+INFO 2025-05-19 16:21:13,956 views User thg2@gmail.com registered and logged in.
+DEBUG 2025-05-19 16:21:25,780 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:28:14,887 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:28:29,489 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:28:32,061 views Room info accessed: Room ID=459
+DEBUG 2025-05-19 16:29:09,133 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+INFO 2025-05-19 16:30:16,084 views Review submitted: User=thg2@gmail.com, Rating=5
+DEBUG 2025-05-19 16:30:56,253 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+WARNING 2025-05-19 16:31:58,537 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Дата заезда должна быть раньше даты выезда.</li><li>Дата заезда должна быть раньше даты выезда.</li></ul></li></ul>
+WARNING 2025-05-19 16:32:24,261 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Номер 222 для типа &#x27;standard&#x27; недоступен или не существует.</li></ul></li></ul>
+WARNING 2025-05-19 16:32:26,309 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Слишком много гостей. Максимум 8 человек на номер. Пожалуйста, забронируйте 2 или более номера.</li></ul></li></ul>
+DEBUG 2025-05-19 16:33:25,702 views Form data: room_type=presidential, room_number=402, check_in=2025-11-12, check_out=2025-12-13
+INFO 2025-05-19 16:33:25,720 views Booking created: ID=11, Room=402, User=thg2@gmail.com
+INFO 2025-05-19 16:36:01,033 views User nurislamfigma@gmail.com logged in.
+INFO 2025-05-19 16:36:36,790 views User nurislamfigma@gmail.com logged in.
+DEBUG 2025-05-19 16:36:51,082 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:37:06,172 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+INFO 2025-05-19 16:38:47,169 views User nurislamfigma@gmail.com logged in.
+DEBUG 2025-05-19 16:39:04,443 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:39:07,174 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+INFO 2025-05-19 16:43:45,542 views Booking cancelled: ID=11, User=thg2@gmail.com
+WARNING 2025-05-19 16:44:41,329 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Дата заезда должна быть раньше даты выезда.</li><li>Дата заезда должна быть раньше даты выезда.</li></ul></li></ul>
+WARNING 2025-05-19 16:45:24,131 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Дата заезда должна быть раньше даты выезда.</li><li>Дата заезда должна быть раньше даты выезда.</li></ul></li></ul>
+INFO 2025-05-19 16:46:50,571 views User thg2fff@gmail.com registered and logged in.
+INFO 2025-05-19 16:47:36,676 views Contact request submitted: Email=thg2fff@gmail.com
+INFO 2025-05-19 16:47:52,351 views Contact request submitted: Email=thg2fff@gmail.com
+INFO 2025-05-19 16:48:14,475 views Review submitted: User=thg2fff@gmail.com, Rating=5
+DEBUG 2025-05-19 16:49:38,018 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:49:47,151 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:51:41,368 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-05-19 16:52:38,906 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+WARNING 2025-09-23 19:32:58,996 views Failed login attempt: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Неправильный email или пароль.</li></ul></li></ul>
+WARNING 2025-09-23 19:33:13,863 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist" id="id_password2_error"><li>Введённый пароль слишком похож на адрес электронной почты.</li></ul></li></ul>
+WARNING 2025-09-23 19:33:25,397 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist" id="id_password2_error"><li>Введённый пароль слишком широко распространён.</li></ul></li></ul>
+INFO 2025-09-23 19:33:47,633 views User aidaho210306@gmail.com registered and logged in.
+DEBUG 2025-09-23 19:33:56,796 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-09-23 19:34:00,074 views Room info accessed: Room ID=459
+DEBUG 2025-09-23 19:34:03,484 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+WARNING 2025-12-11 18:22:19,465 views Failed login attempt: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Неправильный email или пароль.</li></ul></li></ul>
+WARNING 2025-12-11 18:25:47,279 views Failed registration attempt: <ul class="errorlist"><li>email<ul class="errorlist" id="id_email_error"><li>Пользователь с таким email уже существует.</li></ul></li><li>password2<ul class="errorlist" id="id_password2_error"><li>Введенные пароли не совпадают.</li></ul></li></ul>
+WARNING 2025-12-11 18:26:00,662 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist" id="id_password2_error"><li>Введённый пароль слишком похож на адрес электронной почты.</li></ul></li></ul>
+WARNING 2025-12-11 18:26:10,728 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist" id="id_password2_error"><li>Введённый пароль слишком широко распространён.</li></ul></li></ul>
+INFO 2025-12-11 18:26:24,606 views User asassaasfigma11@gmail.com registered and logged in.
+WARNING 2025-12-11 18:27:34,619 views Form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Дата заезда должна быть раньше даты выезда.</li><li>Дата заезда должна быть раньше даты выезда.</li></ul></li></ul>
+INFO 2025-12-11 18:29:02,003 views User asasas@gmail.com registered and logged in.
+WARNING 2025-12-11 18:39:58,106 views Failed registration attempt: <ul class="errorlist"><li>email<ul class="errorlist" id="id_email_error"><li>Пользователь с таким email уже существует.</li></ul></li></ul>
+INFO 2025-12-11 18:40:12,608 views User nurislamfigma1212112@gmail.com registered and logged in.
+WARNING 2025-12-11 18:41:54,893 views Failed registration attempt: <ul class="errorlist"><li>password2<ul class="errorlist" id="id_password2_error"><li>Введённый пароль слишком похож на адрес электронной почты.</li></ul></li></ul>
+INFO 2025-12-29 19:31:43,458 views User nurislamfigma@gmail.com logged in.
+DEBUG 2025-12-29 19:31:58,957 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-12-29 19:32:01,131 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
+DEBUG 2025-12-29 19:32:11,365 views Rooms displayed on room list: [<Room: Номер 100 (standard)>, <Room: Номер 200 (improved)>, <Room: Номер 300 (lux)>, <Room: Номер 400 (presidential)>]
